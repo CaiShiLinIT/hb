@@ -18,6 +18,7 @@ public class TestController {
 	@RequestMapping("/findAll")
 	public String findAll() {
 		//List<User> userList = testService.findAll();
+		System.out.println("hah");
 		return "index";//逻辑名称 拼接前后缀
 	}
 }
