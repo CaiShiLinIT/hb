@@ -1,0 +1,17 @@
+.button1-1:hover, .button2-1:hover, .button3-1:hover, .button4-1:hover, .button5-1:hover, .button6-1:hover, .button7-1:hover, .button8-1:hover, .button9-1:hover{
+	color: #fff;
+	border-color: #b1b0b0;
+	background: #b1b0b0;
+	border: none;
+}
+
+.start {
+	cursor: pointer;
+}
+
+.end {
+	cursor: pointer;
+	color: #fff;
+	background: red;
+	border: none;
+}

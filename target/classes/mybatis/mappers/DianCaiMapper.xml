@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hb.mapper.DianCaiMapper">
+
+	<!-- 根据销量显示当前菜品排行前5的菜品信息 -->
+	<select id="findPaiMing" resultType="CaiDanPojo">
+		SELECT caiMing,yueXiaoLiang,yuanJiaGe,pingFen,caiPinTuPian,caiDanID FROM caidanbiao
+		ORDER BY yueXiaoLiang DESC LIMIT 0,5
+	</select>
+</mapper>
