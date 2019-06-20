@@ -39,6 +39,7 @@ public class DianCaiController {
 		public SysResult findxiangqing(Integer caiDanId) {
 			try {
 				CaiDanPojo paiMing = xiangQingService.findxiangqing(caiDanId);
+				System.out.println("aaa");
 				return SysResult.ok(paiMing);
 			} catch (Exception e) {
 				e.printStackTrace();
