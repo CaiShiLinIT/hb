@@ -1,0 +1,130 @@
+
+<style>
+.black_overlay {
+	display: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 200%;
+	background-color: black;
+	z-index: 1001;
+	-moz-opacity: 0.8;
+	opacity: .80;
+	filter: alpha(opacity = 88);
+}
+
+.white_content {
+	display: none;
+	position: fixed;
+	top: 25%;
+	left: 25%;
+	width: 55%;
+	height: 55%;
+	padding: 20px;
+	border: 10px solid orange;
+	background-color: white;
+	z-index: 1002;
+	overflow: auto;
+}
+</style>
+<div class="xiangqing" style="margin-right: 1000px;">
+	<div class="caiPin">
+		<h1 class="caiming">九转大肠</h1>
+	</div>
+
+	<div>
+		<img class="tp" src="img/a3.jpg" style="margin-top: 60px;" />
+	</div>
+	<br /> <br />
+	<table
+		style="font-size: 25px; border-spacing: 0px 25px;">
+		<tr>
+			<td>介绍:</td>
+			<td class="js">肥而不腻</td>
+		</tr>
+		<tr>
+			<td>月销量:&emsp;&emsp;</td>
+			<td class="yxl">156</td>
+		</tr>
+
+		<br />
+
+		<tr>
+			<td>价格:</td>
+			<td class="jg">1456</td>
+		</tr>
+
+		<tr>
+			<td>评分:</td>
+			<td class="pf">100</td>
+		</tr>
+	</table>
+
+	<br /> <input type="button" value="评论评分"
+		style="width: 150px; height: 50px; font-weight: 900; font-size: 30px;"
+		onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" />
+	<div id="light" class="white_content">
+		<!-- 弹框 -->
+		<div id="tk" title="菜品评价和评分">
+			<p style="font-size: 30px">
+				评&nbsp;&nbsp;分&nbsp;&nbsp;： <select id="pingfen"
+					style="height: 45px; width: 100px; font-size: 15px;">
+					<option value="11">--评分--</option>
+					<option value="0">0分</option>
+					<option value="1">1分</option>
+					<option value="2">2分</option>
+					<option value="3">3分</option>
+					<option value="4">4分</option>
+					<option value="5">5分</option>
+					<option value="6">6分</option>
+					<option value="7">7分</option>
+					<option value="8">8分</option>
+					<option value="9">9分</option>
+					<option value="10">10分</option>
+				</select>
+			</p>
+			<p style="font-size: 25px">
+				评&nbsp;&nbsp;论&nbsp;&nbsp;： <br />
+				<textarea class="pingLun" style="resize: none;"
+					placeholder="输入评价信息！" cols=100px rows=20px id="pl"></textarea>
+			</p>
+			<div style="float: right; font-size: 25px;">
+				<div
+					onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">返回</div>
+				<br />
+				<div class="tj" onclick="pingJiaNeiRong(this)"
+					style="border: 1px; background-color: white; font-size: 25px">
+					<div
+						onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">提交</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="fade" class="black_overlay"></div>
+	<br /> <br />
+	<h2>评论评分</h2>
+
+	<table
+		style="font-size: 25px; border-spacing: 0px 25px;">
+		<tr>
+			<td>用户名:</td>
+			<td>张三</td>
+		</tr>
+
+		<tr>
+			<td>评分:</td>
+			<td>135</td>
+		</tr>
+
+		<tr>
+			<td>评论:</td>
+			<td>水电费是的范德萨范德萨范德萨</td>
+		</tr>
+
+		<tr>
+			<td>日期:</td>
+			<td>2019.3.01</td>
+		</tr>
+	</table>
+</div>
