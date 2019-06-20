@@ -18,7 +18,7 @@ public class TestController {
 	@RequestMapping("/findAll")
 	public String findAll() {
 		System.out.println("哈哈哈哈哈哈 测试分支合并");
-		System.out.println("测试div分支合并");
+		System.out.println("第二次测试div分支合并");
 		//List<User> userList = testService.findAll();
 		return "index";//逻辑名称 拼接前后缀
 	}
