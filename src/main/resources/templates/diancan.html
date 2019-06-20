@@ -183,13 +183,12 @@
 		<script>
 			$(function() {
 				//加载事件
-				dotebie(document.getElementsByClassName("button1-1"))
+				dotebie(document.getElementsByClassName("button1-1"))//查询特殊类别菜品
 				var collection = $(".flag");
 				$.each(collection, function() {
 					$(this).addClass("start");
 				});
 			});
-			//查询特殊类别菜品
 
 			//单击事件
 			function fun(dom) {
@@ -201,6 +200,7 @@
 				doGetCaiDanByType(dom);
 				$(dom).removeClass("start");
 				$(dom).addClass("end");
+				//改变按钮颜色
 				$(".flag").css("background","#FFFFFF").css("border","none");
 				$(dom).css("background","#DAA31C")
 			}

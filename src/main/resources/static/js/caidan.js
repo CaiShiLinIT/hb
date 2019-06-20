@@ -17,6 +17,8 @@ function doGetCaiDanByType(dom) {
 }
 //查询菜单特殊类别
 function dotebie(dom) {
+    $(".flag").css("background","#FFFFFF").css("border","none");
+    $(dom).css("background","#DAA31C")
     $.ajax({
         type: "GET",
         url: "/caidan/tebie/",
@@ -32,7 +34,7 @@ function dotebie(dom) {
         }
     })
 }
-
+//创建table并按需取值和改变css样式 加入到页面中
 function createTBody(data) {
     $(".canDan_li").empty()
     for(var i=0; i<data.length; i++){

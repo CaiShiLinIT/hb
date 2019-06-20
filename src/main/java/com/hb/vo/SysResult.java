@@ -10,10 +10,11 @@ public class SysResult {
     private String msg;     //描述短语
     private int status;     //200->成功 201->失败
     private Object data;    //封装数据
-
+    //私有无参构造方法
     private SysResult(){
 
     }
+    //私有全参构造方法
     private SysResult(String msg, int status, Object data) {
         this.msg = msg;
         this.status = status;
@@ -21,7 +22,7 @@ public class SysResult {
     }
 
     /**
-     * 成功返回
+     * 成功返回 有数据有短语
      * @param msg
      * @param data
      * @return
@@ -31,7 +32,7 @@ public class SysResult {
     }
 
     /**
-     * 成功返回
+     * 成功返回 有数据无短语
      * @param data
      * @return
      */
@@ -40,7 +41,7 @@ public class SysResult {
     }
 
     /**
-     * 成功返回
+     * 成功返回 200无数据无短语
      * @return
      */
     public static SysResult ok(){
@@ -48,7 +49,7 @@ public class SysResult {
     }
 
     /**
-     * 失败返回
+     * 失败返回 无数据无短语
      * @return
      */
     public static SysResult fail(){
@@ -56,7 +57,7 @@ public class SysResult {
     }
 
     /**
-     * 失败返回
+     * 失败返回 有短语
      * @param msg 短语
      * @return
      */

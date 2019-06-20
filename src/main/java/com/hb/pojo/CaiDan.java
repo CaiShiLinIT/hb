@@ -8,6 +8,9 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
+/**
+ * 菜品PoJo
+ */
 @Data
 @Accessors(chain = true)
 @TableName("caidanbiao")

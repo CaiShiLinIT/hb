@@ -7,7 +7,6 @@ import com.hb.pojo.CaiDan;
 import com.hb.service.CaiDanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,7 +15,11 @@ public class CaiDanServiceImpl implements CaiDanService {
     @Autowired
     private CaiDanMapper caiDanMapper;
 
-    @Redis_Cache("caipin")
+    /**
+     * @param lei 类别
+     * @return List<CaiDan>
+     */
+    @Redis_Cache("caipin") //此注解使用AOP从Redis存取数据
     @Override
     public List<CaiDan> findCaiDanByLeiXing(Integer lei) {
         List<CaiDan> list = caiDanMapper.selectList(
@@ -24,7 +27,12 @@ public class CaiDanServiceImpl implements CaiDanService {
         return list;
     }
 
-    @Redis_Cache("teShuCaiPin")
+    /**
+     *
+     * @param par 字段
+     * @return List<CaiDan>
+     */
+    @Redis_Cache("teShuCaiPin")  //此注解使用AOP从Redis存取数据
     @Override
     public List<CaiDan> findCaiDanByTeBie(String par) {
         List<CaiDan> list = caiDanMapper.selectList(
