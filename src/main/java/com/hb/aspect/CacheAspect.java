@@ -51,7 +51,7 @@ public class CacheAspect {
             key += "_" + jp.getArgs()[0];
         }
         return key;
-    }
+}
 
     /**
      * 根据切入点获取该方法上的参数值

@@ -115,3 +115,14 @@ border: 0px;
 	color: #fff;
 	font-family: Arial Black
 }
+.num-jia, .num-jian {
+	-webkit-user-select: none;
+}
+td{
+	white-space:nowrap;
+	overflow:hidden;
+	word-break:keep-all;
+}
+table{
+	table-layout:fixed;
+}

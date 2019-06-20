@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
@@ -28,22 +27,20 @@
 						<h1 style="color: white;">老家肉饼</h1></td>
 				</tr>
 			</table>
-
 		</div>
 		<div class="divTwo">
 			<table>
 				<tr>
 					<td class="caiDan" style="display: none;">
 						<ul>
-							<li><input class="flag button1-1" type="button" value="推荐" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button2-1" type="button" value="折扣" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button3-1" type="button" value="新品" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button4-1" type="button" value="主食沙拉" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button5-1" type="button" value="甜品小吃" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button6-1" type="button" value="品质套餐" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button7-1" type="button" value="酒水饮料" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button8-1" type="button" value="汤羹配菜" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button9-1" type="button" value="主食" onclick="fun(this)" /></li>
+							<li><input class="flag button1-1" type="button" value="推荐" par="tuiJian" style="background: #DAA31C;border: #b1b0b0 solid 1px;" onclick="dotebie(this)" /></li><br /><br />
+							<li><input class="flag button2-1" type="button" value="折扣" par="zheKou" onclick="dotebie(this)" /></li><br /><br />
+							<li><input class="flag button3-1" type="button" value="新品" par="xinPin" onclick="dotebie(this)" /></li><br /><br />
+							<li><input class="flag button4-1" type="button" value="菜" lei="1" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button5-1" type="button" value="主食" lei="2" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button6-1" type="button" value="汤类" lei="3" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button7-1" type="button" value="饮料" lei="4" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button8-1" type="button" value="甜品小吃" lei="5" onclick="fun(this)" /></li>
 						</ul>
 						<br /><br /><br /><br /><br /><br /><br />
 						<input class="cart" type="button" value="购物车" />
@@ -64,7 +61,7 @@
 						</div><br />
 						<div class="cai">
 							<ul>
-								<li>
+								<li class="canDan_li">
 									<table>
 										<tr>
 											<td rowspan="4"><img src="http://image.jt.com/2019/06/12/de1770674af9453d91f87ea5a5402dc7.jpg" class="img1" /></td>
@@ -89,18 +86,17 @@
 											<td class="shuliang">
 												<ul class="btn-numbox">
 													<ul class="count">
-														<li><span id="num-jian" class="num-jian">-</span></li>
+														<li><span id="num-jian" class="num-jian" style="color:black;">-</span></li>
 														<li><input type="text" class="input-num" id="input-num" value="0" /></li>
-														<li><span id="num-jia" class="num-jia">+</span></li>
+														<li><span id="num-jia" class="num-jia" style="color:black;">+</span></li>
 													</ul>
 												</ul>
 											</td>
 										</tr>
 									</table>
-
 									<table>
 										<tr>
-											<td rowspan="4"><img src="../img/a5.jpg" class="img1" /></td>
+											<td rowspan="4"><img src="http://image.jt.com/2019/06/12/de1770674af9453d91f87ea5a5402dc7.jpg" class="img1" /></td>
 											<td>&emsp;&emsp;&emsp;&emsp;名称：</td>
 											<td class="mc"></td>
 											<td></td>
@@ -122,41 +118,9 @@
 											<td class="shuliang">
 												<ul class="btn-numbox">
 													<ul class="count">
-														<li><span id="num-jian" class="num-jian">-</span></li>
+														<li><span id="num-jian" class="num-jian" style="color:black;">-</span></li>
 														<li><input type="text" class="input-num" id="input-num" value="0" /></li>
-														<li><span id="num-jia" class="num-jia">+</span></li>
-													</ul>
-												</ul>
-											</td>
-										</tr>
-									</table>
-									<table>
-										<tr>
-											<td rowspan="5"><img src="../img/a5.jpg" class="img1" /></td>
-											<td>&emsp;&emsp;&emsp;&emsp;名称：</td>
-											<td class="mc"></td>
-											<td></td>
-										</tr>
-										<tr>
-											<td>&emsp;&emsp;&emsp;&emsp;开销：</td>
-											<td class="kx"></td>
-											<td></td>
-										</tr>
-										<tr>
-											<td>&emsp;&emsp;&emsp;&emsp;价格：</td>
-											<td class="jg"></td>
-											<td></td>
-										</tr>
-										<tr>
-											<td>&emsp;&emsp;&emsp;&emsp;评分：</td>
-											<td class="pf"></td>
-											<td></td>
-											<td class="shuliang">
-												<ul class="btn-numbox">
-													<ul class="count">
-														<li><span id="num-jian" class="num-jian">-</span></li>
-														<li><input type="text" class="input-num" id="input-num" value="0" /></li>
-														<li><span id="num-jia" class="num-jia">+</span></li>
+														<li><span id="num-jia" class="num-jia" style="color:black;">+</span></li>
 													</ul>
 												</ul>
 											</td>
@@ -219,11 +183,14 @@
 		<script>
 			$(function() {
 				//加载事件
+				dotebie(document.getElementsByClassName("button1-1"))
 				var collection = $(".flag");
 				$.each(collection, function() {
 					$(this).addClass("start");
 				});
 			});
+			//查询特殊类别菜品
+
 			//单击事件
 			function fun(dom) {
 				var collection = $(".flag");
@@ -231,13 +198,15 @@
 					$(this).removeClass("end");
 					$(this).addClass("start");
 				});
+				doGetCaiDanByType(dom);
 				$(dom).removeClass("start");
 				$(dom).addClass("end");
-				$(".flag").css("background","#FFFFFF")
+				$(".flag").css("background","#FFFFFF").css("border","none");
 				$(dom).css("background","#DAA31C")
-
 			}
 		</script>
+		<!--发送ajax获取菜单数据-->
+		<script src="../js/caidan.js"></script>
 	</body>
 
 </html>
