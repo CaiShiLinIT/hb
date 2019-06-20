@@ -1,0 +1,117 @@
+*{
+	margin: 0;
+}
+.top{
+	height:20%;
+	width:100%;
+}
+.top1{
+	background-color: rgba(0,0,1,0.7);
+	height: 60px;
+	width:100%;
+	
+}
+.top ul li {
+	display: block;
+	float: left;
+}
+.round{
+	width: 120px;
+	height: 120px; 
+	margin-top: 0px;
+	margin-bottom: 20px;
+	margin-left: 500px;
+	display: flex;
+	border-radius: 50%;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	
+}
+
+.dc,
+.grzh,
+.jyyj,
+.sy,
+.ss{
+border: 0px;
+	color: white;
+	background-color:transparent;
+    border-style:none;
+	width: 100px;
+	height: 50px;
+	margin: 0px 100px;
+	font-size: 22px;
+	font-weight: 900;
+	font-family:"宋体";
+}
+.sy{
+	margin-left: 500px;
+}
+
+.text {
+	width: 200px;
+	height: 30px;
+	margin-left:100px;
+	margin-top: 0px;
+}
+.ss{
+	width: 50px;
+	height: 50px;
+	margin-left: 10px;
+	
+}
+.divTwo {
+	margin-left: 300px;
+	height: 1000px;
+	position: absolute;
+}
+.caiDan{
+	position: absolute;
+}
+.caiDan ul li {
+	display: block;
+	margin-left: 150px;
+}
+
+.caiDan ul li input {
+	color: black;
+	background-color:transparent;
+    border-style:none;
+    font-size: 22px;
+	font-weight: 900;
+	font-family:"微软雅黑";
+}
+
+.cart {
+	color: black;
+	background-color:transparent;
+    border-style:none;
+    font-size: 22px;
+	font-weight: 900;
+	font-family:"微软雅黑";
+	width: 150px;
+	height: 50px;
+	margin-left: 110px;
+}
+.caiPin{
+	padding-left: 250px;
+	position: absolute;
+}
+.img1{
+	width: 500px;
+	height: 200px;
+}
+.luoBo1 {
+	width: 1280px;
+	height: 666px;
+	font-size: 40px;
+	text-align: center;
+	margin: 5px 0;
+	background-color: #464576;
+}
+.carousel-item {
+	line-height: 336px;
+	color: #fff;
+	font-family: Arial Black
+}

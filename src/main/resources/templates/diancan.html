@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="../css/diancan.css" type="text/css" rel="stylesheet" />
+		<link href="../css/shuliang.css" type="text/css" rel="stylesheet" />
+		<link href="../css/ft-carousel.css" type="text/css" rel="stylesheet" />
+		<link href="../css/dianji.css" type="text/css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="top" style="background-image: url(../img/10086.png)">
+			<ul class="top1">
+				<li><input class="sy" value="首页" type="button" /></li>
+				<li><input class="dc" value="点餐" type="button" /></li>
+				<li><input class="grzh" value="个人账户" type="button" /></li>
+				<li><input class="jyyj" value="建设意见" type="button" /></li>
+				<li><input class="text" type="text" placeholder="请输入菜品名称" />
+					<input class="ss" value="搜索" type="button" /></li>
+			</ul>
+			<br/>
+			<table>
+				<tr>
+					<td><img src="../img/first.png" class="round" /></td>
+					<td style="padding-left: 20px;font-size: 20px;">
+						<h1 style="color: white;">老家肉饼</h1></td>
+				</tr>
+			</table>
+
+		</div>
+		<div class="divTwo">
+			<table>
+				<tr>
+					<td class="caiDan" style="display: none;">
+						<ul>
+							<li><input class="flag button1-1" type="button" value="推荐" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button2-1" type="button" value="折扣" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button3-1" type="button" value="新品" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button4-1" type="button" value="主食沙拉" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button5-1" type="button" value="甜品小吃" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button6-1" type="button" value="品质套餐" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button7-1" type="button" value="酒水饮料" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button8-1" type="button" value="汤羹配菜" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button9-1" type="button" value="主食" onclick="fun(this)" /></li>
+						</ul>
+						<br /><br /><br /><br /><br /><br /><br />
+						<input class="cart" type="button" value="购物车" />
+					</td>
+					<td class="caiPin">
+						<p style="font-size: 35px; ">招牌菜：</p>
+						<div class="luoBo1">
+							<div class="ft-carousel" id="carousel_1">
+								<ul class="carousel-inner">
+									<li class="carousel-item"><img src="../img/a1.jpg" /></li>
+									<li class="carousel-item"><img src="../img/a2.jpg" /></li>
+									<li class="carousel-item"><img src="../img/a3.jpg" /></li>
+									<li class="carousel-item"><img src="../img/a4.jpg" /></li>
+									<li class="carousel-item"><img src="../img/a5.jpg" /></li>
+									<li class="carousel-item"><img src="../img/a6.jpg" /></li>
+								</ul>
+							</div>
+						</div><br />
+						<div class="cai">
+							<ul>
+								<li>
+									<table>
+										<tr>
+											<td rowspan="4"><img src="http://image.jt.com/2019/06/12/de1770674af9453d91f87ea5a5402dc7.jpg" class="img1" /></td>
+											<td>&emsp;&emsp;&emsp;&emsp;名称：</td>
+											<td class="mc"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&emsp;&emsp;&emsp;&emsp;开销：</td>
+											<td class="kx"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&emsp;&emsp;&emsp;&emsp;价格：</td>
+											<td class="jg"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&emsp;&emsp;&emsp;&emsp;评分：</td>
+											<td class="pf"></td>
+											<td></td>
+											<td class="shuliang">
+												<ul class="btn-numbox">
+													<ul class="count">
+														<li><span id="num-jian" class="num-jian">-</span></li>
+														<li><input type="text" class="input-num" id="input-num" value="0" /></li>
+														<li><span id="num-jia" class="num-jia">+</span></li>
+													</ul>
+												</ul>
+											</td>
+										</tr>
+									</table>
+
+									<table>
+										<tr>
+											<td rowspan="4"><img src="../img/a5.jpg" class="img1" /></td>
+											<td>&emsp;&emsp;&emsp;&emsp;名称：</td>
+											<td class="mc"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&emsp;&emsp;&emsp;&emsp;开销：</td>
+											<td class="kx"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&emsp;&emsp;&emsp;&emsp;价格：</td>
+											<td class="jg"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&emsp;&emsp;&emsp;&emsp;评分：</td>
+											<td class="pf"></td>
+											<td></td>
+											<td class="shuliang">
+												<ul class="btn-numbox">
+													<ul class="count">
+														<li><span id="num-jian" class="num-jian">-</span></li>
+														<li><input type="text" class="input-num" id="input-num" value="0" /></li>
+														<li><span id="num-jia" class="num-jia">+</span></li>
+													</ul>
+												</ul>
+											</td>
+										</tr>
+									</table>
+									<table>
+										<tr>
+											<td rowspan="5"><img src="../img/a5.jpg" class="img1" /></td>
+											<td>&emsp;&emsp;&emsp;&emsp;名称：</td>
+											<td class="mc"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&emsp;&emsp;&emsp;&emsp;开销：</td>
+											<td class="kx"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&emsp;&emsp;&emsp;&emsp;价格：</td>
+											<td class="jg"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&emsp;&emsp;&emsp;&emsp;评分：</td>
+											<td class="pf"></td>
+											<td></td>
+											<td class="shuliang">
+												<ul class="btn-numbox">
+													<ul class="count">
+														<li><span id="num-jian" class="num-jian">-</span></li>
+														<li><input type="text" class="input-num" id="input-num" value="0" /></li>
+														<li><span id="num-jia" class="num-jia">+</span></li>
+													</ul>
+												</ul>
+											</td>
+										</tr>
+									</table>
+								</li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!--轮播-->
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/ft-carousel.min.js"></script>
+		<script>
+			$("#carousel_1").FtCarousel();
+			$("#carousel_2").FtCarousel({
+				index: 1,
+				auto: false
+			});
+			$("#carousel_3").FtCarousel({
+				index: 0,
+				auto: true,
+				time: 1000,
+				indicators: false,
+				buttons: true
+			});
+		</script>
+
+		<!--加减数量-->
+		<script>
+			$("body").on("click", ".num-jian", function(m) {
+				var obj = $(this).closest("ul").find(".input-num");
+				if(obj.val() <= 0) {
+					obj.val(0);
+				} else {
+					obj.val(parseInt(obj.val()) - 1);
+				}
+				obj.change();
+			});
+			$("body").on("click", ".num-jia", function(m) {
+				var obj = $(this).closest("ul").find(".input-num");
+				obj.val(parseInt(obj.val()) + 1);
+				obj.change();
+			});
+		</script>
+		<script>
+			window.onscroll = function() {
+				if($(document).scrollTop() > 50) {
+					$('.caiDan').show()
+					$(".caiPin").css("margin-left","250px")
+				}
+				if($(document).scrollTop() < 50) {
+					$('.caiDan').hide()
+					$(".caiPin").css("margin-left","250px")
+				}
+			}
+		</script>
+		<script>
+			$(function() {
+				//加载事件
+				var collection = $(".flag");
+				$.each(collection, function() {
+					$(this).addClass("start");
+				});
+			});
+			//单击事件
+			function fun(dom) {
+				var collection = $(".flag");
+				$.each(collection, function() {
+					$(this).removeClass("end");
+					$(this).addClass("start");
+				});
+				$(dom).removeClass("start");
+				$(dom).addClass("end");
+				$(".flag").css("background","#FFFFFF")
+				$(dom).css("background","#DAA31C")
+
+			}
+		</script>
+	</body>
+
+</html>
