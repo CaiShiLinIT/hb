@@ -17,8 +17,6 @@ public class XiangQingServiceImpl implements XiangQingService{
 	@Override
 	public CaiDanPojo findxiangqing(Integer caiDanId) {
 		CaiDanPojo paiMing = xiangQingMapper.findxiangqing(caiDanId);
-		System.out.println("哈哈哈呵呵");
-		System.out.println("哈哈哈呵呵");
 		return paiMing;
 	}
 

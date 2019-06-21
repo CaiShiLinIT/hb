@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hb.common.SysResult;
 import com.hb.pojo.CaiDanPojo;
 import com.hb.service.DianCanService;
+import com.hb.service.LeiService;
 import com.hb.service.XiangQingService;
 
 @Controller
@@ -19,6 +20,8 @@ public class DianCaiController {
 	private DianCanService dianCanService;
 	@Autowired
 	private XiangQingService xiangQingService;
+	@Autowired
+	private LeiService leiService;
 
 	//根据当前商品的销售量排行显示出当前的排名的数量
 	@RequestMapping("dodiancan")
@@ -47,4 +50,19 @@ public class DianCaiController {
 			}
 
 		}
+		
+		//根据菜品类型找菜
+				@RequestMapping("findLei")
+				@ResponseBody
+				public SysResult findLei(Integer caiPinLeiXing) {
+					try {
+						List<CaiDanPojo> paiMing = leiService.findLei(caiPinLeiXing);
+						System.out.println(SysResult.ok(paiMing));
+						return SysResult.ok(paiMing);
+					} catch (Exception e) {
+						e.printStackTrace();
+						return SysResult.fail();
+					}
+
+				}
 }
