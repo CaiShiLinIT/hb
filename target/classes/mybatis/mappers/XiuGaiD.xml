@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hb.mapper.XiuGaiMapper">
+
+	<!--查询商家信息 -->
+	<select id="findD" resultType="ShangJiaPojo">
+		select * from shangjiabiao
+	</select>
+	<!-- 修改商家信息 -->
+	<!-- <update id="updateD" resultType="int">
+		update shangjiabiao set dianHua=#{dianHua},diZhi=#{diZhi},fuWuZongZhi=#{fuWuZongZhi},shangJiaTuPian=#{shangJiaTuPian}
+	</update>  -->
+</mapper>
