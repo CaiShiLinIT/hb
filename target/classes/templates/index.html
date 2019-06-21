@@ -11,7 +11,7 @@
 		<link href="css/pinglun.css" type="text/css" rel="stylesheet" />
 	</head>
 
-	<body>
+	<body style="background-color:#E1E1E1;">
 		<div class="top" style="background-image: url(img/10086.png)">
 			<ul class="top1">
 				<li><input class="sy" value="首页" type="button" /></li>
@@ -219,27 +219,22 @@
 		}
 		
 		function dodl(data){
-			var tds= "<tr>" + "<td rowspan='6'><img class='big' id='"
+			var tds= "<table style='background-color:white; width:1250px;margin-top:50px;margin-bottom:50px'>"+"<tr>" + "<td style='width:600px; background-color:black' align='center' rowspan='6'><img class='big' id='"
 			+ data.caiDanId
 			+ "' src="
 			+ data.caiPinTuPian
 			+ " width='450px' height='250px' /></td>"
-			+ "</tr>" + "<tr>" + "<td></td><td><font class='text'>菜品名称："
+			+ "</tr>" + "<tr>" + "<td><font class='text'>菜品名称："
 			+ data.caiMing
 			+ "</font></td><td class='dym'></td>" + "</tr>" + "<tr>"
-			+ "<td></td><td><font class='text'>月销量：" + data.yueXiaoLiang
+			+ "<td><font class='text'>月销量：" + data.yueXiaoLiang
 			+ "</font></td><td class='sysh'></td>" + "</tr>" + "<tr>"
-			+ "<td></td><td><font class='text'>价格：" + data.yuanJiaGe
+			+ "<td><font class='text'>价格：" + data.yuanJiaGe
 			+ "</font></td><td class='sc'></td>" + "</tr>" + "<tr>"
-			+ "<td></td><td><font class='text'>评分："
+			+ "<td><font class='text'>评分："
 			+ data.pingFen
 			+ "</font></td><td class='pf'></td>" 
-			//+ "</tr>" +
-			//"<tr>"+"<td></td><td><font class='text'>剧情介绍："+data.dianYingJieShao+"</font></td><td class='pf'></td>"+"</tr>"+
-			//"<tr>" + "<td></td><td><font class='text'>电影类型："
-			//+ data.dianYingLeiXing + "</font></td><td class='pf'></td>"
-			//+ "</tr>" + "<tr><td height='50px'> <td/>
-			+"</tr>";
+			+"</tr>"+"</table>";
 
 	return tds;
 		

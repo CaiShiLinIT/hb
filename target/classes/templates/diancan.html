@@ -4,15 +4,14 @@
 					<td class="caiDan">
 						<ul>
 							<br/><br/><br/><br/><br/><br/><br/>
-							<li><input class="flag button1-1" type="button" value="推荐" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button2-1" type="button" value="折扣" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button3-1" type="button" value="新品" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button4-1" type="button" value="主食沙拉" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button5-1" type="button" value="甜品小吃" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button6-1" type="button" value="品质套餐" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button7-1" type="button" value="酒水饮料" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button8-1" type="button" value="汤羹配菜" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button9-1" type="button" value="主食" onclick="fun(this)" /></li>
+							<li><input class="flag button1-1" type="button" value="推荐" /></li><br /><br />
+							<li><input class="flag button1-1" type="button" value="折扣" /></li><br /><br />
+							<li><input class="flag button1-1" type="button" value="新品" /></li><br /><br />
+							<li><input id="1" class="flag button1-1" type="button" value="菜"  /></li><br /><br />
+							<li><input id="2" class="flag button1-1" type="button" value="主食" /></li><br /><br />
+							<li><input id="3" class="flag button1-1" type="button" value="汤类" /></li><br /><br />
+							<li><input id="4" class="flag button1-1" type="button" value="饮料" /></li><br /><br />
+							<li><input id="5" class="flag button1-1" type="button" value="甜品小吃" /></li><br /><br />
 						</ul>
 						<br /><br /><br /><br /><br /><br /><br />
 						<input class="cart" type="button" value="购物车" />
@@ -34,7 +33,7 @@
 						<div class="cai">
 							<ul>
 								<li>
-									<table>
+									<table style="background-color:#E1E1E1; width:1300px;">
 										<tbody class="Tbody">
 										<tr>
 											<td rowspan="4"><a href="xiangqing.html"><img src="img/a5.jpg" class="img1" /></a></td>
@@ -82,6 +81,67 @@
 		<script src="js/jquery-1.4.2.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/ft-carousel.min.js"></script>
+			<!-- 找菜 -->
+		<script>
+		$(function(){
+			doLoadUIII("button1-1","findLei")
+		})
+		function doLoadUIII(id,url){
+			$("."+id).click(function(){
+				var id = $(this).attr("id");
+				$(".caiPin").load(url,function(SysResult){
+					var url = "findLei";
+					var params = {
+							caiPinLeiXing : id
+						};
+					$.post(url, params, function(SysResult) {
+						if(SysResult.status==200){
+							console.log(SysResult.data)
+							doSetResult2(SysResult.data);
+						}
+					})
+				})
+			})
+		}
+		function doSetResult2(Result){
+				var Tbody=$(".caiPin")
+				Tbody.empty();
+				for (var i = 0; i < Result.length; i++) {
+					//2.2 创建tr对象
+					var tr = $("<tr></tr>");
+					//2.3 创建多个td对象
+					var tds = dodl(Result[i]);
+					//2.4 将td对象追加到tr中
+					
+					tr.append(tds);
+					//2.5 将tr追加到tbody中
+					Tbody.append(tr);			
+			}
+				$(function(){
+					doLoadUII("big","xiangqing")
+				});
+		}
+		/* function dodll(data){
+			var tds= "<tr>" + "<td rowspan='6'><img class='big' id='"
+			+ data.caiDanId
+			+ "' src="
+			+ data.caiPinTuPian
+			+ " width='450px' height='250px' /></td>"
+			+ "</tr>" + "<tr>" + "<td></td><td><font class='text'>菜品名称："
+			+ data.caiMing
+			+ "</font></td><td class='dym'></td>" + "</tr>" + "<tr>"
+			+ "<td></td><td><font class='text'>月销量：" + data.yueXiaoLiang
+			+ "</font></td><td class='sysh'></td>" + "</tr>" + "<tr>"
+			+ "<td></td><td><font class='text'>价格：" + data.yuanJiaGe
+			+ "</font></td><td class='sc'></td>" + "</tr>" + "<tr>"
+			+ "<td></td><td><font class='text'>评分："
+			+ data.pingFen
+			+ "</font></td><td class='pf'></td>"+"</tr>";
+	return tds;
+		
+		} */
+		</script>
+		
 		<!--轮播-->
 		<script>
 			$("#carousel_1").FtCarousel();
@@ -96,26 +156,6 @@
 				indicators: false,
 				buttons: true
 			});
-		</script>
-		<script>
-		$(function () {
-		    //加载事件
-		        var collection = $(".flag");
-		        $.each(collection, function () {
-		            $(this).addClass("start");
-		        });
-		    });
-		    //单击事件
-		 function fun(dom) {
-		        var collection = $(".flag");
-		        $.each(collection, function () {
-		            $(this).removeClass("end");
-		            $(this).addClass("start");
-		        });
-		        $(dom).removeClass("start");
-	 	        $(dom).addClass("end");
-	 	        
-		    }
 		</script>
 
 		<!--加减数量-->
@@ -161,6 +201,10 @@
 			$(".yxl").empty();
 			$(".yxl").append(result.yueXiaoLiang);
 			$(".jg").empty();
-			$(".jg").append(result.yuanJiaGe); 
+			$(".jg").append(result.pingFen); 
+			$(".pf").empty();
+			$(".pf").append(result.pingFen); 
+			$(".js").attr("id",result.caiDanId);
 		}
 		</script>
+	
