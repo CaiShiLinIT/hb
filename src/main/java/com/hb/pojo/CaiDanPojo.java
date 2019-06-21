@@ -13,7 +13,6 @@ import lombok.experimental.Accessors;
 public class CaiDanPojo {
 	@TableId(type=IdType.AUTO)
 	private Integer caiDanId;
-	
 	private String caiMing;
 	private Double yuanJiaGe;
 	private Double youHuiJiaGe;
