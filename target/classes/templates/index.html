@@ -1,36 +1,285 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-<meta charset="UTF-8">
-<title>CSS3可切换背景颜色的日历控件DEMO演示</title>
+<html>
 
-<link rel="stylesheet" href="css/style.css">
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<link href="css/shuliang.css" type="text/css" rel="stylesheet" />
+		<link href="css/dianji.css" type="text/css" rel="stylesheet" />
+		<link href="css/diancan.css" type="text/css" rel="stylesheet" />
+		<link href="css/ft-carousel.css" type="text/css" rel="stylesheet" />
+		<link href="css/pinglun.css" type="text/css" rel="stylesheet" />
+	</head>
 
-</head>
-<body>
-
-<div class="calendar">
-	<div class="header">
-		<a data-action="prev-month" href="javascript:void(0)" title="Previous Month"><i></i></a>
-		<div class="text" data-render="month-year"></div>
-		<a data-action="next-month" href="javascript:void(0)" title="Next Month"><i></i></a>
-	</div>
-	<div class="months" data-flow="left">
-		<div class="month month-a">
-			<div class="render render-a"></div>
+	<body>
+		<div class="top" style="background-image: url(img/10086.png)">
+			<ul class="top1">
+				<li><input class="sy" value="首页" type="button" /></li>
+				<li><input class="dc" value="点餐" type="button" /></li>
+				<li><input class="grzh" value="个人账户" type="button" /></li>
+				<li><input class="jyyj" value="建设意见" type="button" /></li>
+				<li><input class="text" type="text" placeholder="请输入菜品名称" />
+					<input class="ss" value="搜索" type="button" /></li>
+			</ul>
+			<br/>
+			<table>
+				<tr>
+					<td><img src="img/3.gif" class="round" /></td>
+					<td style="padding-left: 20px;font-size: 20px;">
+						<h1 style="color: white;">老家肉饼</h1></td>
+				</tr>
+			</table>
 		</div>
-		<div class="month month-b">
-			<div class="render render-b"></div>
+		<div class="bottom">
+		<h1 align="center" style="font-size: 50px; font-family: '微软雅黑'; padding-top: 50px;padding-bottom: 50px;">欢迎来到快乐兄弟盟餐厅:</h1>
+		<div class="luoBo2">
+			<div class="ft-carousel" id="carousel_1">
+				<ul class="carousel-inner">
+					<li class="carousel-item"><img src="img/a1.jpg" /></li>
+					<li class="carousel-item"><img src="img/a2.jpg" /></li>
+					<li class="carousel-item"><img src="img/a3.jpg" /></li>
+					<li class="carousel-item"><img src="img/a4.jpg" /></li>
+					<li class="carousel-item"><img src="img/a5.jpg" /></li>
+					<li class="carousel-item"><img src="img/a6.jpg" /></li>
+				</ul>
+			</div>
+		</div><br />
+		<font style="margin-left:600px ; margin-top: 100px; font: '微软雅黑'; font-size: 40px; letter-spacing: 10px; font-weight: 900;" >位置:杏石口路卖肉店</font>
+		<br /><br /><br />
+		<font style="margin-left:600px ; margin-top: 100px; font: '微软雅黑'; font-size: 40px; letter-spacing: 10px; font-weight: 900;" >服务宗旨:好吃再来</font>	
+		<br /><br /><br />
+		<font style="margin-left:600px ; margin-top: 100px; font: '微软雅黑'; font-size: 40px; letter-spacing: 10px; font-weight: 900;" >意见建议:</font>	
+		
+		<!--评论-->
+		
+<div id="qq">
+	<p>有什么新鲜事想告诉大家?</p>
+	<div class="message" contentEditable='true'></div>
+
+	<div class="But">
+		<img src="img/bba_thumb.gif" class='bq'/>
+		<span class='submit'>发表</span>
+		<!--face begin-->
+		<div class="face">
+			<ul>
+				<li><img src="img/zz2_thumb.gif" title="[织]" ></li>
+				<li><img src="img/horse2_thumb.gif" title="神马]"></li>
+				<li><img src="img/fuyun_thumb.gif" title="[浮云]"></li>
+				<li><img src="img/geili_thumb.gif" title="[给力]"></li>
+				<li><img src="img/wg_thumb.gif" title="[围观]"></li>
+				<li><img src="img/vw_thumb.gif" title="[威武]"></li>
+				<li><img src="img/panda_thumb.gif" title="[熊猫]"></li>
+				<li><img src="img/rabbit_thumb.gif" title="兔子]"></li>
+				<li><img src="img/otm_thumb.gif" title="[奥特曼]"></li>
+				<li><img src="img/j_thumb.gif" title="[囧]"></li>
+				<li><img src="img/hufen_thumb.gif" title="[互粉]"></li>
+				<li><img src="img/liwu_thumb.gif" title="[礼物]"></li>
+				<li><img src="img/smilea_thumb.gif" title="呵呵]"></li>
+				<li><img src="img/tootha_thumb.gif" title="嘻嘻]"></li>
+				<li><img src="img/laugh.gif" title="[哈哈]"></li>
+				<li><img src="img/tza_thumb.gif" title="[可爱]"></li>
+				<li><img src="img/kl_thumb.gif" title="[可怜]"></li>
+				<li><img src="img/kbsa_thumb.gif" title="[挖鼻屎]"></li>
+				<li><img src="img/cj_thumb.gif" title="[吃惊]"></li>
+				<li><img src="img/shamea_thumb.gif" title="[害羞]"></li>
+				<li><img src="img/zy_thumb.gif" title="[挤眼]"></li>
+				<li><img src="img/bz_thumb.gif" title="[闭嘴]"></li>
+				<li><img src="img/bs2_thumb.gif" title="[鄙视]"></li>
+				<li><img src="img/lovea_thumb.gif" title="[爱你]"></li>
+				<li><img src="img/sada_thumb.gif" title="[泪]"></li>
+				<li><img src="img/heia_thumb.gif" title="[偷笑]"></li>
+				<li><img src="img/qq_thumb.gif" title="[亲亲]"></li>
+				<li><img src="img/sb_thumb.gif" title="[生病]"></li>
+				<li><img src="img/mb_thumb.gif" title="[太开心]"></li>
+				<li><img src="img/ldln_thumb.gif" title="[懒得理你]"></li>
+				<li><img src="img/yhh_thumb.gif" title="[右哼哼]"></li>
+				<li><img src="img/zhh_thumb.gif" title="[左哼哼]"></li>
+				<li><img src="img/x_thumb.gif" title="[嘘]"></li>
+				<li><img src="img/cry.gif" title="[衰]"></li>
+				<li><img src="img/wq_thumb.gif" title="[委屈]"></li>
+				<li><img src="img/t_thumb.gif" title="[吐]"></li>
+				<li><img src="img/k_thumb.gif" title="[打哈气]"></li>
+				<li><img src="img/bba_thumb.gif" title="[抱抱]"></li>
+				<li><img src="img/angrya_thumb.gif" title="[怒]"></li>
+				<li><img src="img/yw_thumb.gif" title="[疑问]"></li>
+				<li><img src="img/cza_thumb.gif" title="[馋嘴]"></li>
+				<li><img src="img/88_thumb.gif" title="[拜拜]"></li>
+				<li><img src="img/sk_thumb.gif" title="[思考]"></li>
+				<li><img src="img/sweata_thumb.gif" title="[汗]"></li>
+				<li><img src="img/sleepya_thumb.gif" title="[困]"></li>
+				<li><img src="img/sleepa_thumb.gif" title="[睡觉]"></li>
+				<li><img src="img/money_thumb.gif" title="[钱]"></li>
+				<li><img src="img/sw_thumb.gif" title="[失望]"></li>
+				<li><img src="img/cool_thumb.gif" title="[酷]"></li>
+				<li><img src="img/hsa_thumb.gif" title="[花心]"></li>
+				<li><img src="img/hatea_thumb.gif" title="[哼]"></li>
+				<li><img src="img/gza_thumb.gif" title="[鼓掌]"></li>
+				<li><img src="img/dizzya_thumb.gif" title="[晕]"></li>
+				<li><img src="img/bs_thumb.gif" title="[悲伤]"></li>
+				<li><img src="img/crazya_thumb.gif" title="[抓狂]"></li>
+				<li><img src="img/h_thumb.gif" title="[黑线]"></li>
+				<li><img src="img/yx_thumb.gif" title="[阴险]"></li>
+				<li><img src="img/nm_thumb.gif" title="[怒骂]"></li>
+				<li><img src="img/hearta_thumb.gif" title="[心]"></li>
+				<li><img src="img/unheart.gif" title="[伤心]"></li>
+				<li><img src="img/pig.gif" title="[猪头]"></li>
+				<li><img src="img/ok_thumb.gif" title="[ok]"></li>
+				<li><img src="img/ye_thumb.gif" title="[耶]"></li>
+				<li><img src="img/good_thumb.gif" title="[good]"></li>
+				<li><img src="img/no_thumb.gif" title="[不要]"></li>
+				<li><img src="img/z2_thumb.gif" title="[赞]"></li>
+				<li><img src="img/come_thumb.gif" title="[来]"></li>
+				<li><img src="img/sad_thumb.gif" title="[弱]"></li>
+				<li><img src="img/lazu_thumb.gif" title="[蜡烛]"></li>
+				<li><img src="img/clock_thumb.gif" title="[钟]"></li>
+				<li><img src="img/cake.gif" title="[蛋糕]"></li>
+				<li><img src="img/m_thumb.gif" title="[话筒]"></li>
+				<li><img src="img/weijin_thumb.gif" title="[围脖]"></li>
+				<li><img src="img/lxhzhuanfa_thumb.gif" title="[转发]"></li>
+				<li><img src="img/lxhluguo_thumb.gif" title="[路过这儿]"></li>
+				<li><img src="img/bofubianlian_thumb.gif" title="[bofu变脸]"></li>
+				<li><img src="img/gbzkun_thumb.gif" title="[gbz困]"></li>
+				<li><img src="img/boboshengmenqi_thumb.gif" title="[生闷气]"></li>
+				<li><img src="img/chn_buyaoya_thumb.gif" title="[不要啊]"></li>
+				<li><img src="img/daxiongleibenxiong_thumb.gif" title="[dx泪奔]"></li>
+				<li><img src="img/cat_yunqizhong_thumb.gif" title="[运气中]"></li>
+				<li><img src="img/youqian_thumb.gif" title="[有钱]"></li>
+				<li><img src="img/cf_thumb.gif" title="[冲锋]"></li>
+				<li><img src="img/camera_thumb.gif" title="[照相机]"></li>	
+			</ul>
 		</div>
+		<!--face end-->
 	</div>
 </div>
-
-<script  src="js/index.js"></script>
-
-<div style="text-align:center;clear:both;margin-top:50px;">
-<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-<script src="/follow.js" type="text/javascript"></script>
+<!--qq end-->
+<div id="time1"></div>
+<!--msgCon begin-->
+<div class="msgCon">
 </div>
+</div>
+	
+	<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/jquery-1.4.2.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/ft-carousel.min.js"></script>
+		<!--轮播-->
+		<script>
+			$("#carousel_1").FtCarousel();
+			$("#carousel_2").FtCarousel({
+				index: 1,
+				auto: false
+			});
+			$("#carousel_3").FtCarousel({
+				index: 0,
+				auto: true,
+				time: 1000,
+				indicators: false,
+				buttons: true
+			});
+		</script>
+		
+		<!-- 加载点餐 -->
+		<script type="text/javascript">
+		$(function(){
+			doLoadUI("dc","url")
+		})
+		function doLoadUI(id,url){
+			$("."+id).click(function(){
+				$(".bottom").load("diancan",function(){
+					var url="dodiancan";
+					$.post(url,function(SysResult){
+						if(SysResult.status==200){
+ 							doSetResult(SysResult.data)
+ 							
+						}
+					})
+				})
+			})
+		}
+		function doSetResult(Result){
+			
+			var Tbody=$(".Tbody")
+			Tbody.empty();
+			
+			for (var i = 0; i < Result.length; i++) {
+				
+				//2.2 创建tr对象
+				var tr = $("<tr></tr>");
+				//2.3 创建多个td对象
+				var tds = dodl(Result[i]);
+				//2.4 将td对象追加到tr中
+				tr.append(tds);
+				//2.5 将tr追加到tbody中
+				Tbody.append(tr);			
+			
+		}
+			$(function(){
+				doLoadUII("big","xiangqing")
+			});
+		}
+		
+		function dodl(data){
+			var tds= "<tr>" + "<td rowspan='6'><img class='big' id='"
+			+ data.caiDanId
+			+ "' src="
+			+ data.caiPinTuPian
+			+ " width='450px' height='250px' /></td>"
+			+ "</tr>" + "<tr>" + "<td></td><td><font class='text'>菜品名称："
+			+ data.caiMing
+			+ "</font></td><td class='dym'></td>" + "</tr>" + "<tr>"
+			+ "<td></td><td><font class='text'>月销量：" + data.yueXiaoLiang
+			+ "</font></td><td class='sysh'></td>" + "</tr>" + "<tr>"
+			+ "<td></td><td><font class='text'>价格：" + data.yuanJiaGe
+			+ "</font></td><td class='sc'></td>" + "</tr>" + "<tr>"
+			+ "<td></td><td><font class='text'>评分："
+			+ data.pingFen
+			+ "</font></td><td class='pf'></td>" 
+			//+ "</tr>" +
+			//"<tr>"+"<td></td><td><font class='text'>剧情介绍："+data.dianYingJieShao+"</font></td><td class='pf'></td>"+"</tr>"+
+			//"<tr>" + "<td></td><td><font class='text'>电影类型："
+			//+ data.dianYingLeiXing + "</font></td><td class='pf'></td>"
+			//+ "</tr>" + "<tr><td height='50px'> <td/>
+			+"</tr>";
+
+	return tds;
+		
+		}
+		
+		</script>
+		<!--评论-->
+<script type="text/javascript">
+
+	//点击小图片，显示表情
+	$(".bq").click(function(e){
+		$(".face").slideDown();//慢慢向下展开
+		e.stopPropagation();   //阻止冒泡事件
+	});
+
+	//在桌面任意地方点击，他是关闭
+	$(document).click(function(){
+		$(".face").slideUp();//慢慢向上收
+	});
+
+	//点击小图标时，添加功能
+	$(".face ul li").click(function(){
+		var simg=$(this).find("img").clone();
+		$(".message").append(simg);
+	});
+
+	//点击发表按扭，发表内容
+	$("span.submit").click(function(){
+
+		var txt=$(".message").html();
+		if(txt==""){
+			$('.message').focus();//自动获取焦点
+			return;
+		}
+
+		$(".msgCon").prepend("<div class='msgBox'><dl><dt><img src='img/tx.jpg' width='50' height='50'/></dt><dd>神马都是浮云</dd></dl><div class='msgTxt'>"+txt+"</div></div>");
+	});
+
+</script>
 
 </body>
+
 </html>

@@ -1,0 +1,166 @@
+		<div class="divTwo">
+			<table>
+				<tr>
+					<td class="caiDan">
+						<ul>
+							<br/><br/><br/><br/><br/><br/><br/>
+							<li><input class="flag button1-1" type="button" value="推荐" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button2-1" type="button" value="折扣" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button3-1" type="button" value="新品" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button4-1" type="button" value="主食沙拉" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button5-1" type="button" value="甜品小吃" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button6-1" type="button" value="品质套餐" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button7-1" type="button" value="酒水饮料" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button8-1" type="button" value="汤羹配菜" onclick="fun(this)" /></li><br /><br />
+							<li><input class="flag button9-1" type="button" value="主食" onclick="fun(this)" /></li>
+						</ul>
+						<br /><br /><br /><br /><br /><br /><br />
+						<input class="cart" type="button" value="购物车" />
+					</td>
+					<td class="caiPin">
+						<p style="font-size: 35px;font-weight: 900;">招牌菜：</p>
+						<div class="luoBo1">
+							<div class="ft-carousel" id="carousel_1">
+								<ul class="carousel-inner">
+									<li class="carousel-item"><img src="img/a1.jpg" /></li>
+									<li class="carousel-item"><img src="img/a2.jpg" /></li>
+									<li class="carousel-item"><img src="img/a3.jpg" /></li>
+									<li class="carousel-item"><img src="img/a4.jpg" /></li>
+									<li class="carousel-item"><img src="img/a5.jpg" /></li>
+									<li class="carousel-item"><img src="img/a6.jpg" /></li>
+								</ul>
+							</div>
+						</div><br />
+						<div class="cai">
+							<ul>
+								<li>
+									<table>
+										<tbody class="Tbody">
+										<tr>
+											<td rowspan="4"><a href="xiangqing.html"><img src="img/a5.jpg" class="img1" /></a></td>
+											<td>&emsp;&emsp;&emsp;&emsp;名称：正在加载中。。。。</td>
+											<td class="mc"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&emsp;&emsp;&emsp;&emsp;开销：</td>
+											<td class="kx"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&emsp;&emsp;&emsp;&emsp;价格：</td>
+											<td class="jg"></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>&emsp;&emsp;&emsp;&emsp;评分：</td>
+											<td class="pf"></td>
+											<td></td>
+											<td class="shuliang">
+												<ul class="btn-numbox">
+													<ul class="count">
+														<li><span id="num-jian" class="num-jian">-</span></li>
+														<li><input type="text" class="input-num" id="input-num" value="0" /></li>
+														<li><span id="num-jia" class="num-jia">+</span></li>
+													</ul>
+												</ul>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+
+									
+								</li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</div>
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/jquery-1.4.2.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/ft-carousel.min.js"></script>
+		<!--轮播-->
+		<script>
+			$("#carousel_1").FtCarousel();
+			$("#carousel_2").FtCarousel({
+				index: 1,
+				auto: false
+			});
+			$("#carousel_3").FtCarousel({
+				index: 0,
+				auto: true,
+				time: 1000,
+				indicators: false,
+				buttons: true
+			});
+		</script>
+		<script>
+		$(function () {
+		    //加载事件
+		        var collection = $(".flag");
+		        $.each(collection, function () {
+		            $(this).addClass("start");
+		        });
+		    });
+		    //单击事件
+		 function fun(dom) {
+		        var collection = $(".flag");
+		        $.each(collection, function () {
+		            $(this).removeClass("end");
+		            $(this).addClass("start");
+		        });
+		        $(dom).removeClass("start");
+	 	        $(dom).addClass("end");
+	 	        
+		    }
+		</script>
+
+		<!--加减数量-->
+		<script>
+			$("body").on("click", ".num-jian", function(m) {
+				var obj = $(this).closest("ul").find(".input-num");
+				if(obj.val() <= 0) {
+					obj.val(0);
+				} else {
+					obj.val(parseInt(obj.val()) - 1);
+				}
+				obj.change();
+			});
+			$("body").on("click", ".num-jia", function(m) {
+				var obj = $(this).closest("ul").find(".input-num");
+				obj.val(parseInt(obj.val()) + 1);
+				obj.change();
+			});
+		</script>
+		<script type="text/javascript">
+		
+		function doLoadUII(id,url){
+			$("."+id).click(function(){
+				var id = $(this).attr("id");
+				$(".caiPin").load(url,function(){
+					var params = {
+							caiDanId : id
+						};
+					var url = "doxiangqing";
+					$.post(url, params, function(Result) {
+						console.log(Result.data)
+						doSetResult1(Result.data);
+					})
+				})
+			})
+		}
+		function doSetResult1(result){
+			$(".caiming").empty();
+			$(".caiming").append(result.caiMing); 
+			$(".tp").attr("src", result.caiPinTuPian)
+			$(".js").empty();
+			$(".js").append(result.caiPinMiaoShu);
+			$(".yxl").empty();
+			$(".yxl").append(result.yueXiaoLiang);
+			$(".jg").empty();
+			$(".jg").append(result.yuanJiaGe); 
+		}
+		</script>

@@ -15,10 +15,6 @@ public class ManageController {
 	@Autowired
 	private ManageService manageService;
 	
-	@RequestMapping("/{module}")
-	public String findAll(@PathVariable String module) {
-		return module;
-	}
 	//  /manage/booking/msg?bookingDate=2019-05-30&selectTime=2
 	@RequestMapping("/manage/booking/msg")
 	@ResponseBody
