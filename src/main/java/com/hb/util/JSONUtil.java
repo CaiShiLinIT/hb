@@ -35,7 +35,7 @@ public class JSONUtil {
      * @param <T> 返回类型
      * @return
      */
-    public static <T> T toJson(String json, Class<T> cla){
+    public static <T> T toObject(String json, Class<T> cla){
         T data = null;
         try {
             data = mapper.readValue(json, cla);

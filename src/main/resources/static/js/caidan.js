@@ -15,10 +15,55 @@ function doGetCaiDanByType(dom) {
         }
     })
 }
+
+//购物车商品减少或删除
+function doUpdateDelCart(params) {
+    var url = params.shuLiang==0?"/cart/delete/":"/cart/update/"
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: params,
+        dataType: "json"
+    })
+}
+//购物车商品增加或创建
+function doUpdateAddCart(params) {
+    var url = params.shuLiang==1?"/cart/add/":"/cart/update/"
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: params,
+        dataType: "json"
+    })
+}
+//查询用户购物车
+function doQueryCart() {
+    $.ajax({
+        type: "POST",
+        url: "/cart/queryByUID",
+
+        dataType: "json",
+        // data: {caiPinId:$(dom).attr("zhi")},
+        success: function (result) {
+            if (result.status == 200) {
+                var table = document.getElementsByClassName("caiPin_id")
+                for (var i = 0; i < table.length; i++) {
+                    var zhi = $(table[i]).closest("table").find(".caiPin_id").attr("zhi")
+                    for (var j = 0; j < result.data.length; j++) {
+                        if(zhi == result.data[j].caiPinId){
+                            $(table[i]).closest("table").find(".input-num").val(result.data[j].shuLiang)
+                        }
+                    }
+                }
+            }
+        }
+    })
+}
+
 //查询菜单特殊类别
 function dotebie(dom) {
     $(".flag").css("background","#FFFFFF").css("border","none");
-    $(dom).css("background","#DAA31C")
+    $(dom).css("background","#DAA31C");
     $.ajax({
         type: "GET",
         url: "/caidan/tebie/",
@@ -26,7 +71,7 @@ function dotebie(dom) {
         dataType: "json",
         success: function(result) {
             if (result.status == 200) {
-                console.log(result.data)
+                // console.log(result.data)
                 //调用创建tbody函数
                 createTBody(result.data)
             } else
@@ -43,6 +88,7 @@ function createTBody(data) {
             "\t\t\t\t\t\t\t\t\t\t\t<td rowspan=\"4\"><img src=\"http://image.jt.com/2019/06/12/de1770674af9453d91f87ea5a5402dc7.jpg\" class=\"img1\" /></td>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t<td>&emsp;&emsp;&emsp;&emsp;名称：</td>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t<td class=\"mc\">"+data[i].caiMing+"</td>\n" +
+            "\t\t\t\t\t\t\t\t\t\t\t<td zhi='"+data[i].caiDanID+"' class='caiPin_id"+data[i].caiDanID+" caiPin_id'></td>" +
             "\t\t\t\t\t\t\t\t\t\t\t<td></td>\n" +
             "\t\t\t\t\t\t\t\t\t\t</tr>\n" +
             "\t\t\t\t\t\t\t\t\t\t<tr>\n" +
@@ -53,7 +99,7 @@ function createTBody(data) {
             "\t\t\t\t\t\t\t\t\t\t<tr>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t<td>&emsp;&emsp;&emsp;&emsp;价格：</td>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t<td class=\"jg\">"+data[i].youHuiJiaGe+"</td>\n" +
-            "\t\t\t\t\t\t\t\t\t\t\t<td class='youHui'></td>\n" +
+            "\t\t\t\t\t\t\t\t\t\t\t<td class='shiji"+data[i].caiDanID+"'><s>"+data[i].yuanJiaGe+"</s></td>\n" +
             "\t\t\t\t\t\t\t\t\t\t</tr>\n" +
             "\t\t\t\t\t\t\t\t\t\t<tr>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t<td>&emsp;&emsp;&emsp;&emsp;评分：</td>\n" +
@@ -62,18 +108,20 @@ function createTBody(data) {
             "\t\t\t\t\t\t\t\t\t\t\t<td class=\"shuliang\">\n" +
             "\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"btn-numbox\">\n" +
             "\t\t\t\t\t\t\t\t\t\t\t\t\t<ul class=\"count\">\n" +
-            "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li><span id=\"num-jian\" class=\"num-jian\" style=\"color:black;\">-</span></li>\n" +
+            "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li><span  class=\"num-jian\" style=\"color:black;\">-</span></li>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li><input type=\"text\" class=\"input-num\" id=\"input-num\" value=\"0\" /></li>\n" +
-            "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li><span id=\"num-jia\" class=\"num-jia\" style=\"color:black;\">+</span></li>\n" +
+            "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<li><span  class=\"num-jia\" style=\"color:black;\">+</span></li>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t\t</ul>\n" +
             "\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
             "\t\t\t\t\t\t\t\t\t\t</tr>\n" +
             "\t\t\t\t\t\t\t\t\t</table>"
-        $(".canDan_li").append(c_table)
-        if(data[i].zheKou == 1){
-            $(".youHui").text(data[i].yuanJiaGe).css("text-decoration","line-through")
+        $(".canDan_li").append(c_table)/*.append("<script>doQueryCart(document.getElementsByClassName(\"caiPin_id"+data[i].caiDanID+"\"))</script>")*/
+        if(data[i].zheKou == 0){
+            var id = ".shiji"+data[i].caiDanID
+            $(id).text("")
         }
     }
+    doQueryCart()
 
 }

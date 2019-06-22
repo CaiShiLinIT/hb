@@ -43,7 +43,8 @@
 							<li><input class="flag button8-1" type="button" value="甜品小吃" lei="5" onclick="fun(this)" /></li>
 						</ul>
 						<br /><br /><br /><br /><br /><br /><br />
-						<input class="cart" type="button" value="购物车" />
+
+						<a href="/cart/index"><input class="cart" type="button"  value="购物车" /></a>
 					</td>
 					<td class="caiPin">
 						<p style="font-size: 35px; ">招牌菜：</p>
@@ -86,41 +87,9 @@
 											<td class="shuliang">
 												<ul class="btn-numbox">
 													<ul class="count">
-														<li><span id="num-jian" class="num-jian" style="color:black;">-</span></li>
+														<li><span class="num-jian" style="color:black;">-</span></li>
 														<li><input type="text" class="input-num" id="input-num" value="0" /></li>
-														<li><span id="num-jia" class="num-jia" style="color:black;">+</span></li>
-													</ul>
-												</ul>
-											</td>
-										</tr>
-									</table>
-									<table>
-										<tr>
-											<td rowspan="4"><img src="http://image.jt.com/2019/06/12/de1770674af9453d91f87ea5a5402dc7.jpg" class="img1" /></td>
-											<td>&emsp;&emsp;&emsp;&emsp;名称：</td>
-											<td class="mc"></td>
-											<td></td>
-										</tr>
-										<tr>
-											<td>&emsp;&emsp;&emsp;&emsp;开销：</td>
-											<td class="kx"></td>
-											<td></td>
-										</tr>
-										<tr>
-											<td>&emsp;&emsp;&emsp;&emsp;价格：</td>
-											<td class="jg"></td>
-											<td></td>
-										</tr>
-										<tr>
-											<td>&emsp;&emsp;&emsp;&emsp;评分：</td>
-											<td class="pf"></td>
-											<td></td>
-											<td class="shuliang">
-												<ul class="btn-numbox">
-													<ul class="count">
-														<li><span id="num-jian" class="num-jian" style="color:black;">-</span></li>
-														<li><input type="text" class="input-num" id="input-num" value="0" /></li>
-														<li><span id="num-jia" class="num-jia" style="color:black;">+</span></li>
+														<li><span class="num-jia" style="color:black;">+</span></li>
 													</ul>
 												</ul>
 											</td>
@@ -156,16 +125,32 @@
 			$("body").on("click", ".num-jian", function(m) {
 				var obj = $(this).closest("ul").find(".input-num");
 				if(obj.val() <= 0) {
-					obj.val(0);
+					return false;
 				} else {
 					obj.val(parseInt(obj.val()) - 1);
 				}
 				obj.change();
+				var params = {
+					title:$(this).closest("table").find(".mc").text(),
+					img:$(this).closest("table").find(".img1").attr("src"),
+					caiPinId:$(this).closest("table").find(".caiPin_id").attr("zhi"),
+					price:$(this).closest("table").find(".jg").text(),
+					shuLiang:obj.val()
+				}
+				doUpdateDelCart(params)
 			});
 			$("body").on("click", ".num-jia", function(m) {
 				var obj = $(this).closest("ul").find(".input-num");
 				obj.val(parseInt(obj.val()) + 1);
 				obj.change();
+				var params = {
+					title:$(this).closest("table").find(".mc").text(),
+					img:$(this).closest("table").find(".img1").attr("src"),
+					caiPinId:$(this).closest("table").find(".caiPin_id").attr("zhi"),
+					price:$(this).closest("table").find(".jg").text(),
+					shuLiang:obj.val()
+				}
+				doUpdateAddCart(params)
 			});
 		</script>
 		<script>
