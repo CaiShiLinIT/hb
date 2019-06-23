@@ -4,18 +4,17 @@
 					<td class="caiDan">
 						<ul>
 							<br/><br/><br/><br/><br/><br/><br/>
-							<li><input class="flag button1-1" type="button" value="推荐" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button2-1" type="button" value="折扣" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button3-1" type="button" value="新品" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button4-1" type="button" value="主食沙拉" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button5-1" type="button" value="甜品小吃" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button6-1" type="button" value="品质套餐" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button7-1" type="button" value="酒水饮料" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button8-1" type="button" value="汤羹配菜" onclick="fun(this)" /></li><br /><br />
-							<li><input class="flag button9-1" type="button" value="主食" onclick="fun(this)" /></li>
+							<li><input class="flag button1-1" type="button" value="推荐" /></li><br /><br />
+							<li><input class="flag button1-1" type="button" value="折扣" /></li><br /><br />
+							<li><input class="flag button1-1" type="button" value="新品" /></li><br /><br />
+							<li><input id="1" class="flag button1-1" type="button" value="菜"  /></li><br /><br />
+							<li><input id="2" class="flag button1-1" type="button" value="主食" /></li><br /><br />
+							<li><input id="3" class="flag button1-1" type="button" value="汤类" /></li><br /><br />
+							<li><input id="4" class="flag button1-1" type="button" value="饮料" /></li><br /><br />
+							<li><input id="5" class="flag button1-1" type="button" value="甜品小吃" /></li><br /><br />
 						</ul>
 						<br /><br /><br /><br /><br /><br /><br />
-						<input class="cart" type="button" value="购物车" />
+						<input class="cart" type="button" value="购物车" onclick=kele(this) />
 					</td>
 					<td class="caiPin">
 						<p style="font-size: 35px;font-weight: 900;">招牌菜：</p>
@@ -34,7 +33,7 @@
 						<div class="cai">
 							<ul>
 								<li>
-									<table>
+									<table style="background-color:#E1E1E1; width:1300px;">
 										<tbody class="Tbody">
 										<tr>
 											<td rowspan="4"><a href="xiangqing.html"><img src="img/a5.jpg" class="img1" /></a></td>
@@ -77,11 +76,84 @@
 				</tr>
 			</table>
 		</div>
-		</div>
+		
+	
+		
+		
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<script src="js/jquery-1.4.2.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/ft-carousel.min.js"></script>
+		<script src="js/caidan.js"></script>
+			<!-- 找菜 -->
+		<script>
+		function kele(){
+			var array = doQueryAsyncCart({yhm:oneValues()})
+			if(array == null)
+				alert("购物车没有商品！")
+			//doQueryCart({yhm:oneValues()})
+			dodllei(doQueryAsyncCart({yhm:oneValues()}).data);
+		}
+		$(function(){
+			doLoadUIII("button1-1","findLei")
+		})
+		function doLoadUIII(id,url){
+			$("."+id).click(function(){
+				var id = $(this).attr("id");
+				$(".caiPin").load(url,function(SysResult){
+					var url = "findLei";
+					var params = {
+							caiPinLeiXing : id
+						};
+					$.post(url, params, function(SysResult) {
+						if(SysResult.status==200){
+							console.log(SysResult.data)
+							doSetResult2(SysResult.data);
+						}
+					})
+					doQueryCart({yhm:oneValues()})
+				})
+			})
+		}
+		function doSetResult2(Result){
+				var Tbody=$(".caiPin")
+				Tbody.empty();
+				for (var i = 0; i < Result.length; i++) {
+					//2.2 创建tr对象
+					var tr = $("<tr></tr>");
+					//2.3 创建多个td对象
+					var tds = dodl(Result[i]);
+					//2.4 将td对象追加到tr中
+					
+					tr.append(tds);
+					//2.5 将tr追加到tbody中
+					Tbody.append(tr);			
+			}
+				$(function(){
+					doLoadUII("big","xiangqing")
+				});
+		}
+		/* function dodll(data){
+			var tds= "<tr>" + "<td rowspan='6'><img class='big' id='"
+			+ data.caiDanId
+			+ "' src="
+			+ data.caiPinTuPian
+			+ " width='450px' height='250px' /></td>"
+			+ "</tr>" + "<tr>" + "<td></td><td><font class='text'>菜品名称："
+			+ data.caiMing
+			+ "</font></td><td class='dym'></td>" + "</tr>" + "<tr>"
+			+ "<td></td><td><font class='text'>月销量：" + data.yueXiaoLiang
+			+ "</font></td><td class='sysh'></td>" + "</tr>" + "<tr>"
+			+ "<td></td><td><font class='text'>价格：" + data.yuanJiaGe
+			+ "</font></td><td class='sc'></td>" + "</tr>" + "<tr>"
+			+ "<td></td><td><font class='text'>评分："
+			+ data.pingFen
+			+ "</font></td><td class='pf'></td>"+"</tr>";
+	return tds;
+		
+		} */
+		</script>
+		
 		<!--轮播-->
 		<script>
 			$("#carousel_1").FtCarousel();
@@ -97,45 +169,47 @@
 				buttons: true
 			});
 		</script>
-		<script>
-		$(function () {
-		    //加载事件
-		        var collection = $(".flag");
-		        $.each(collection, function () {
-		            $(this).addClass("start");
-		        });
-		    });
-		    //单击事件
-		 function fun(dom) {
-		        var collection = $(".flag");
-		        $.each(collection, function () {
-		            $(this).removeClass("end");
-		            $(this).addClass("start");
-		        });
-		        $(dom).removeClass("start");
-	 	        $(dom).addClass("end");
-	 	        
-		    }
-		</script>
 
 		<!--加减数量-->
 		<script>
 			$("body").on("click", ".num-jian", function(m) {
 				var obj = $(this).closest("ul").find(".input-num");
 				if(obj.val() <= 0) {
-					obj.val(0);
+					return false;
 				} else {
 					obj.val(parseInt(obj.val()) - 1);
 				}
 				obj.change();
+				var params = {
+						title:$(this).closest("table").find(".mc").text(),
+						img:$(this).closest("table").find(".big").attr("src"),
+						caiPinId:$(this).closest("table").find(".big").attr("id"),
+						price:$(this).closest("table").find(".jg").text(),
+						shuLiang:obj.val(),
+						yhm:oneValues()
+					}
+				doUpdateDelCart(params)
 			});
 			$("body").on("click", ".num-jia", function(m) {
 				var obj = $(this).closest("ul").find(".input-num");
 				obj.val(parseInt(obj.val()) + 1);
 				obj.change();
+				var params = {
+						title:$(this).closest("table").find(".mc").text(),
+						img:$(this).closest("table").find(".big").attr("src"),
+						caiPinId:$(this).closest("table").find(".big").attr("id"),
+						price:$(this).closest("table").find(".jg").text(),
+						shuLiang:obj.val(),
+						yhm:oneValues()
+					}
+				doUpdateAddCart(params)
 			});
 		</script>
 		<script type="text/javascript">
+		
+		$(function(){
+			doQueryCart({yhm:oneValues()})
+		})
 		
 		function doLoadUII(id,url){
 			$("."+id).click(function(){
@@ -149,6 +223,13 @@
 						console.log(Result.data)
 						doSetResult1(Result.data);
 					})
+					var url2 = "/showpinglun";
+					$.post(url2, params, function(SysResult) {
+						
+						doPingLun(SysResult);
+
+						})
+
 				})
 			})
 		}
@@ -162,5 +243,227 @@
 			$(".yxl").append(result.yueXiaoLiang);
 			$(".jg").empty();
 			$(".jg").append(result.yuanJiaGe); 
+			$(".pf").empty();
+			$(".pf").append(result.pingFen); 
+			$(".js").attr("id",result.caiDanId);
+			$(".plpf").attr("id",result.caiDanId);
+			
+		}
+		
+		
+//展示评论部分js
+		
+	
+		
+			
+		
+
+		function doPingLun(SysResult) {
+
+			// 			var it = jsonResult.entrySet().iterator();
+			// 	        while (it.hasNext()) {
+			//  	            var entity = it.next();            
+			// 	            alert("key: "+entity.getKey());
+			// 	            alert("value: "+entity.getValue());
+			// 	        }
+
+			if (SysResult.status == 200) {
+				
+				doPingLun2(SysResult.data)
+			}
+		}
+
+		function doPingLun2(Result) {
+		
+			var tBody = $(".tbodyId");
+			tBody.empty();
+			//2.将记录records进行呈现
+			//2.1迭代记录集
+			var j=0;
+			var h=0;
+			var a=new Array();
+			var c=new Array();
+			for(var i=0;i<Result.length;i++){
+				
+				if(Result[i].fuJiID==0){
+					a[j]=i;
+					j++;
+					
+					
+				}else{
+				c[h]=i;
+				h++;
+				
+				}
+				
+			}
+			
+			for (var i = 0; i < j; i++) {
+				var b=a[i];
+				//2.2 创建tr对象
+				var tr = $("<tr></tr>");
+				//2.3 创建多个td对象
+				var tds = dopl(Result[b]);
+				//2.4 将td对象追加到tr中
+				
+				tr.append(tds);
+			
+				for(var p=0;p<h;p++){
+					var o=c[p];
+					if(Result[o].fuJiID==Result[b].pingJiaID){
+						var tdss=dopl2(Result[o]);
+						tr.append(tdss)
+					}
+				}
+				
+				//2.5 将tr追加到tbody中
+				tBody.append(tr);
+			}
+			
+		}
+		function dopl(data) {
+			var date = new Date(data.pingLunShiJian);
+			var year = date.getFullYear()
+			var month = date.getMonth() + 1
+			var day = date.getDate()
+			var hour=date.getHours()
+			var min=date.getMinutes()
+			var sec=date.getSeconds()
+				
+			var tds = "<tr style='background:#E1E1E1'>"+"<td>&nbsp;</td>"+"<td></td>"+"<td>&nbsp;</td>"+"</tr>"+"<tr>" 
+					+ "<td class='ping1'style='width:205px;font-weight:900;text-align:center;' >"
+					+ data.yongHuMing+"</td>"
+					+"<td width=800px>"
+					+data.pingFen+"分</td>"
+					+year
+					+ "-" + month + "-" + day+ " "+ hour+":"+min+":"+sec
+					+ "</td>"
+					+ "</tr>"
+					+ "<td class='ping2' ></td>"
+					+"<td></td>"
+					+ "<td></td>"
+					
+					+ "</tr>"
+					+ "<tr>"
+					+"<td></td>"
+					+ "<td >"
+					+ data.pingLun
+					+"&emsp;&emsp;&emsp;<input class='"+data.caiDanID+","+data.pingJiaID+","+data.pingJiaID+"' value='回复' type='button' style='color:#8FADEC' onclick='dianji(this)'/>"
+					+ "<br/>&nbsp;</td>"
+					+"<td></td>"
+					+ "</tr>";
+			return tds;
+		}
+		
+		
+		
+		function dopl2(data) {
+			var date = new Date(data.pingLunShiJian);
+			var year = date.getFullYear()
+			var month = date.getMonth() + 1
+			var day = date.getDate()
+			var hour=date.getHours()
+			var min=date.getMinutes()
+			var sec=date.getSeconds()
+			
+			
+			var tds = "<tr>" +"<td></td>"+ "<td class='ping1'style='vertical-align:top;'colspan='2'>"
+					+ data.yongHuMing+"回复"+data.pid+":&emsp;"
+					
+					+ data.pingLun +"&emsp;&emsp;"
+					+"("+ year
+					+ "/" + month + "/" + day + " "+ hour+":"+min+":"+sec+")"
+					+"&emsp;&emsp;&emsp;<input class='"+data.caiDanID+","+data.fuJiID+","+data.pingJiaID+"' value='回复' type='button' style='color:#8FADEC' onclick='dianji(this)'/><br/>&nbsp"
+					
+					+ "</td>" + "</tr>";
+
+			return tds;
+		}
+		
+		function huiFuNeiRong(){
+			alert("123")
+		}
+		
+		function dodllei(Result){
+			var caiPin=$(".caiPin")
+			caiPin.empty();
+			var qingkong=$("<tr><td width='200px'><input value='清空' onclick='doUpdateDelAllCart({yhm:oneValues()})' type='button'></input></td><td></td><td></td></tr>")
+			caiPin.append(qingkong);
+			for (var i = 0; i < Result.length; i++) {
+				
+				//2.2 创建tr对象
+				var tr = $("<tr></tr>");
+				//2.3 创建多个td对象
+				var tds = dodldanding(Result[i]);
+				//2.4 将td对象追加到tr中
+				tr.append(tds);
+				//2.5 将tr追加到tbody中
+				caiPin.append(tr);
+			}
+			
+			var peisong=$("<tr><td>配送费：</td><td></td><td></td></tr>")
+			var zongjia=$("<tr><td id='zjg'>总价格：</td><td></td><td><input value='特殊要求' type='button'></td></tr>")
+			 
+			var jiezhang=$("<tr><td></td><td><input value='结账' type='button'></input></td><td><input value='查看送货时间' type='button'></input></td></tr>")
+			caiPin.append(peisong);
+			caiPin.append(zongjia);
+			caiPin.append(jiezhang);
+			doZongJia()
+			
+		}
+		
+		function dodldanding(data){
+			var tds= "<table style='background-color:white; width:1250px;margin-top:50px;margin-bottom:50px;text-align:center'>"+"<tr>" + "<td style='width:600px; background-color:black' align='center' rowspan='6'><img class='big' id='"
+			+ data.caiPinId
+			+ "' src="
+			+ data.img
+			+ " width='450px' height='250px' /></td>"
+			+ "</tr>" + "<tr>" + "<td style='width:200px;'>菜品名称："
+			+"</td><td class='dym mc' style='text-align:left' >"+data.title+"</td>" + "</tr>" + "<tr>"
+			+ "<td>购买数量：" 
+			+"</td><td class='sysh' style='text-align:left'>"+data.shuLiang+"</td>" + "</tr>" + "<tr>"
+			+ "<td>价格："
+			+"</td><td class='sc jg' style='text-align:left'>"+data.price+"</td>" + "</tr>"
+			+"<tr><td></td><td>"
+			+"<input value='取消' onclick='doDelete(this)' type='button'></input>"
+			+"</td><tr>"
+			+"</table>";
+			
+	return tds;
+			
+		}
+		function doDelete(dom){
+			var params = {
+				caiPinId:$(dom).closest("table").find(".big").attr("id"),
+				shuLiang:0,
+				yhm:oneValues()
+			}
+			doUpdateDelCart(params)
+			alert("删除成功！")
+			location.reload()
+		}
+		//计算总价格
+		function doZongJia(){
+			var jg = $(".jg")
+			var sysh = $(".sysh")
+			var zjg = 0;
+			for(var i = 0; i<jg.length; i++){
+				zjg += parseInt($(jg[i]).text()) * parseInt($(sysh[i]).text())
+			}
+			$("#zjg").text("总价格："+zjg)
 		}
 		</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	

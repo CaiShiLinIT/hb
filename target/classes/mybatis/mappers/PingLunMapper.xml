@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hb.mapper.PingLunMapper">
+	<!--找到菜品评价表所有分数，放到一个集合中-->
+	<select id="findAllFenShuByCaiDanId" resultType="Integer">
+		select c.pingFen
+		from caipinpingjiabiao c
+		where c.caiDanID=#{caiDanId}
+	</select>
+	<!--将新的评分修改到菜单表-->
+	<update id="updatePingfen">
+		update caidanbiao set pingFen=#{zonghepingfen}
+		where caiDanId=#{caiDanId}
+	</update>
+	
+	<!--将新评论添加到菜品评价表中-->
+	<insert id="addPL"
+		parameterType="com.hb.pojo.PingLunPojo">
+		insert into caipinpingjiabiao
+		values (null,#{pingFen},#{pingLun},now(),#{yongHuMing},#{caiDanID},#{fuJiID},#{pid})
+	</insert>
+</mapper>

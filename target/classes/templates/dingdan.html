@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+  <title>Booking</title>
+    <link rel="stylesheet" href="css/booking.css" type="text/css" media="all" />
+ 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+</head>
+<body>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <div class="query_title">&nbsp;&nbsp;查询日期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查询时间&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开始查询</div>
+  <div class="content bgcolor-1">
+				<span class="input input--haruki">
+					<input class="input__field input__field--haruki " type="date" id="input-1" name="bookingDate"/>
+					<label class="input__label input__label--haruki" for="input-1">
+						<span class="input__label-content input__label-content--haruki">&nbsp;</span>
+					</label>
+				</span>
+				<span class="input input--haruki">
+					<select class="input__field input__field--haruki font_color selectTime" type="text" id="input-2" name="selectTime">
+						<option>早餐</option>
+      					<option>午餐</option>
+      					<option>晚餐</option>
+      					<!-- <option class="get-class" disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宵夜&nbsp;&nbsp;</option> -->
+      				</select>
+					<label class="input__label input__label--haruki" for="input-2">
+						<span class="input__label-content input__label-content--haruki">&nbsp;</span>
+					</label>
+				</span>
+				<span class="input input--haruki">
+					<button class="input__field input__field--haruki font_color" type="text" id="input-3" onclick="refreshTable1()">查询</button>
+					<label class="input__label input__label--haruki" for="input-3">
+						<span class="input__label-content input__label-content--haruki">&nbsp;</span>
+					</label>
+				</span>
+			</div>
+			<hr/>
+			<hr/>
+			<div class="food_check query_title"> 
+			
+			</div>
+			<hr/>
+			<hr/>
+			<div class="count_return"> 
+				<div class="all_count">总收入:xxxx</div>
+			</div>
+
+ 
+  
+  <!-- <label class="datemsg">订餐日期 :  </label> -->
+  <!-- <label class="meal">订餐时间段 :  </label> -->
+ 
+</body>
+<script>
+	//$(function () {
+	// 	alert("引入成功");
+	//});
+
+	function refreshTable1(){
+		$(".food_check").html("");
+		var bookingDate=$(" input[ name='bookingDate' ] ").val()
+		var selectTime=$(".selectTime").val()
+		selectTime=(selectTime=="早餐")?1:(selectTime=="午餐"?2:3)
+		console.log("选择的选项:"+selectTime)
+		var data={"bookingDate" : bookingDate,"selectTime":selectTime}
+		var url="/manage/booking/msg"
+		
+		$.getJSON(url, data, function(result) {
+				if (result.status == 200) {
+					//console.log(result)
+					//console.log(result.data[0])
+					showmsg(result);
+				} else {
+					alert(result.msg)
+				}
+			})
+		/* $.ajax({
+		url : "/manage/booking/msg",
+		type : "get",
+		data : data,
+		dataType : "json",
+		success : showmsg(result)//result
+		}); */
+		
+	}
+	function showmsg(result){//result
+		createTable(result.data.lists);//result.data.lists
+		$(".all_count").html("总收入:  "+result.data.allCount);
+	}
+	//创建n行3列的表格
+	function createTable(lists){//lists
+		//创建table元素
+		var $table = $("<table></table>");
+		    var $tr1=$("<tr></tr>");
+			//创建th元素
+			var $th1=$("<th>菜名</th>");
+			$tr1.append($th1);
+			var $th2=$("<th>日销量(早/中/晚)</th>");
+			$tr1.append($th2);
+			var $th3=$("<th>收入</th>");
+			$tr1.append($th3);
+			$table.append($tr1);
+		for(var i=0;i<lists.length;i++){//循环n次,table中添加n个tr  2-->lists.length
+			var list=lists[i];
+			//创建tr元素
+			var $tr = $("<tr></tr>");
+			//for(var c=0;c<3;c++){//循环3次,tr中添加3个td
+				 var caiMing=list.caiMing;
+				 var $td1 = $("<td>"+caiMing+"</td>");
+				 $tr.append($td1);
+				 var riXiaoLiang=list.riXiaoLiang;
+				 var $td2 = $("<td>"+riXiaoLiang+"</td>");
+				 $tr.append($td2);
+				 var danPinShouRu=list.danPinShouRu;
+				 var $td3 = $("<td>"+danPinShouRu+"</td>");
+				 $tr.append($td3);	
+				//创建td元素并为td添加内容
+				//var $td = $("<td>测试</td>");
+				//将td添加到tr上
+			//}
+			//将tr添加到table上
+			$table.append($tr);
+		}
+		//将创建的整个table添加到body内部
+		$(".food_check").append($table);
+	}
+	
+</script>
+</html>

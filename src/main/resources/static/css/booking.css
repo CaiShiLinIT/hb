@@ -1,0 +1,108 @@
+.selectTime{
+text-align: center;
+text-align-last: center;
+}
+.count_return{
+   margin-top: 20px;
+   margin: 30px;
+   font-size: 30px;
+   background: #f0f0f0;
+	color: #aaa;
+	font-weight: bold;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/*为当前页面中所有td,table添加共同的样式*/
+th,td,table{
+   /*为单元格添加边框*/
+   /*边框:边框宽 实线 红色*/
+   border:5px solid gray;
+   /*合并单元格的边框*/
+   border-collapse:collapse;
+
+}
+/*设置单元格边框和内容之间的距离*/
+td,th{
+   padding: 30px;
+}
+td{
+   text-align: center;
+   /*设置文本字体加粗*/
+   font-weight: bolder;
+}
+/*设置表格宽度*/
+table{
+   width:70%;
+   /*设置表格左右边距为auto,即自适应*/
+   /*margin:(-left)(-right)距离页面边框左右边距*/
+   /*margin-left:auto;margin-right:auto;与下面这种方法等价,左右边距始终相等*/
+/*margin:上下(0) 左右(auto)*/
+   margin: 30px;
+}
+.query_title {
+   padding: 10px;
+   font-size: 20px;
+   background: #f0f0f0;
+	color: #aaa;
+	font-weight: bold;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.date{
+	height: 30px;
+	width: 250px;
+}
+/* 控制编辑区域的 */
+input[type="date"]::-webkit-datetime-edit{
+            /* content: '起始时间'; */
+          
+            padding-left: 10px;
+}
+/* 控制年月日这个区域的 */
+input[type="date"]::-webkit-datetime-edit-fields-wrapper { 
+            background-color: #eee; 
+} 
+/* 这是控制年月日之间的斜线或短横线的 */
+input[type="date"]::-webkit-datetime-edit-text {
+           
+            padding: 5px; 
+			
+} 
+/* 控制年字 */
+input[type="date"]::-webkit-datetime-edit-year-field { 
+             
+			font-size: 20px
+          } 
+/* 控制月字 */
+input[type="date"]::-webkit-datetime-edit-month-field { 
+            
+			font-size: 20px
+          } 
+ /* 控制日字 */
+input[type="date"]::-webkit-datetime-edit-day-field  { 
+          
+			font-size: 20px 
+          } 
+/*控制下拉小箭头的*/ 
+input[type="date"]::-webkit-calendar-picker-indicator {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          /* position: absolute;
+          top: 12px;
+          right: 0px; */
+          border: 1px solid #ccc;
+          border-radius: 2px;
+          box-shadow: inset 0 1px #fff, 0 1px #eee;
+          background-color: #eee;
+          /* background:url('../images/icon.png') -188px -99px; */
+          background-image: -webkit-linear-gradient(top, #f0f0f0, #e6e6e6);
+          color: #666; 
+} 
+        
+/*----------用来移除上下箭头----------*/
+input[type="date"]::-webkit-inner-spin-button {
+	display: none;
+}
+/*----------用来移除叉叉按钮----------*/
+input[type="date"]::-webkit-clear-button{
+   display:none;
+}	

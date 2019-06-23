@@ -11,14 +11,14 @@
 		<link href="css/pinglun.css" type="text/css" rel="stylesheet" />
 	</head>
 
-	<body>
+	<body style="background-color:#E1E1E1;">
 		<div class="top" style="background-image: url(img/10086.png)">
 			<ul class="top1">
 				<li><input class="sy" value="首页" type="button" /></li>
 				<li><input class="dc" value="点餐" type="button" /></li>
 				<li><input class="grzh" value="个人账户" type="button" /></li>
-				<li><input class="jyyj" value="建设意见" type="button" /></li>
-				<li><input class="text" type="text" placeholder="请输入菜品名称" />
+				<li><input class="jyyj" value="视频介绍" type="button" /></li>
+				<li class="souSuo"><input class="text" id="searchName" type="text" placeholder="请输入菜品名称" />
 					<input class="ss" value="搜索" type="button" /></li>
 			</ul>
 			<br/>
@@ -162,6 +162,7 @@
 		<script src="js/jquery-1.4.2.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/ft-carousel.min.js"></script>
+		<script src="js/caidan.js"></script>
 		<!--轮播-->
 		<script>
 			$("#carousel_1").FtCarousel();
@@ -182,7 +183,46 @@
 		<script type="text/javascript">
 		$(function(){
 			doLoadUI("dc","url")
+			<!-- 加载搜索 -->
+			$(".souSuo").on("click",".ss",doss)
 		})
+		
+		<!-- 搜索的方法 -->
+		function doss(){
+			<!--提取前端搜索的内容-->
+			var name=$("#searchName").val();
+			alert(name)
+			var url ="sou/doSouSuo"
+			var params={
+					"name":name
+			}
+			<!--使用ajax-->
+			$.post(url,params,function(result){
+				dodlcool(result.data);
+				
+			})
+		}
+		//调用时，传过来的参数必须是封装的集合的data部分
+		//这个方法作用是刷新点餐右下角div并把数据循环展现出来
+		//再不懂问董梁
+		function dodlcool(Result){
+			var caiPin=$(".caiPin")
+			caiPin.empty();
+			
+			for (var i = 0; i < Result.length; i++) {
+				
+				//2.2 创建tr对象
+				var tr = $("<tr></tr>");
+				//2.3 创建多个td对象
+				var tds = dodl(Result[i]);
+				//2.4 将td对象追加到tr中
+				tr.append(tds);
+				//2.5 将tr追加到tbody中
+				caiPin.append(tr);
+			}
+		}
+		
+		
 		function doLoadUI(id,url){
 			$("."+id).click(function(){
 				$(".bottom").load("diancan",function(){
@@ -219,27 +259,33 @@
 		}
 		
 		function dodl(data){
-			var tds= "<tr>" + "<td rowspan='6'><img class='big' id='"
+			var tds= "<table style='background-color:white; width:1250px;margin-top:50px;margin-bottom:50px;text-align:center'>"+"<tr>" + "<td style='width:600px; background-color:black' align='center' rowspan='6'><img class='big' id='"
 			+ data.caiDanId
 			+ "' src="
 			+ data.caiPinTuPian
 			+ " width='450px' height='250px' /></td>"
-			+ "</tr>" + "<tr>" + "<td></td><td><font class='text'>菜品名称："
-			+ data.caiMing
-			+ "</font></td><td class='dym'></td>" + "</tr>" + "<tr>"
-			+ "<td></td><td><font class='text'>月销量：" + data.yueXiaoLiang
-			+ "</font></td><td class='sysh'></td>" + "</tr>" + "<tr>"
-			+ "<td></td><td><font class='text'>价格：" + data.yuanJiaGe
-			+ "</font></td><td class='sc'></td>" + "</tr>" + "<tr>"
-			+ "<td></td><td><font class='text'>评分："
-			+ data.pingFen
-			+ "</font></td><td class='pf'></td>" 
-			//+ "</tr>" +
-			//"<tr>"+"<td></td><td><font class='text'>剧情介绍："+data.dianYingJieShao+"</font></td><td class='pf'></td>"+"</tr>"+
-			//"<tr>" + "<td></td><td><font class='text'>电影类型："
-			//+ data.dianYingLeiXing + "</font></td><td class='pf'></td>"
-			//+ "</tr>" + "<tr><td height='50px'> <td/>
-			+"</tr>";
+			+ "</tr>" + "<tr>" + "<td style='width:200px;'>菜品名称："
+			+"</td><td class='dym mc' style='text-align:left' >"+data.caiMing+"</td>" + "</tr>" + "<tr>"
+			+ "<td>月销量：" 
+			+"</td><td class='sysh' style='text-align:left'>"+data.yueXiaoLiang+"</td>" + "</tr>" + "<tr>"
+			+ "<td>价格："
+			+"</td><td class='sc jg' style='text-align:left'>"+data.yuanJiaGe+"</td>" + "</tr>" + "<tr>"
+			+ "<td>评分："
+			+"</td>"
+			+"<td style='text-align:left'>"+data.pingFen
+			
+		    +"</td>"
+			+"</tr>"
+			+"<tr><td></td><td class='shuliang'>"
+			+"<ul class='btn-numbox'>"
+			+"<ul class='count'>"
+			+"<span class='num-jian' style='color:black;'>-</span>"
+			+"<input type='text' class='input-num' id='input-num' value='0' />"
+			+"<span class='num-jia' style='color:black;'>+</span>"
+			+"</ul>"
+			+"</ul>"
+			+"</td><tr>"
+			+"</table>";
 
 	return tds;
 		
@@ -248,7 +294,16 @@
 		</script>
 		<!--评论-->
 <script type="text/javascript">
-
+	function oneValues() {
+		var result;
+		var url = window.location.search; //获取url中"?"符后的字串  
+		if (url.indexOf("?") != -1) {
+			result = url.substr(url.indexOf("=") + 1);
+		}
+		console.log(result);
+		return result;
+	}
+	
 	//点击小图片，显示表情
 	$(".bq").click(function(e){
 		$(".face").slideDown();//慢慢向下展开

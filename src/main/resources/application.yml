@@ -1,16 +1,23 @@
 server:
   port: 8099
-  servlet:    context-path: /
-spring:  datasource:
+  servlet:
+    context-path: /
+spring:
+  datasource:
     #引入druid数据源
-    type: com.alibaba.druid.pool.DruidDataSource    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/hbdb?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
     username: root
     password: root
-  #配置前缀,后缀
+  #配置前缀,后缀 #声明thymeleaf使用非严格的html。
   thymeleaf:
+    content-type: text/html
+    mode: LEGACYHTML5 
+    cache: false
     prefix: classpath:/templates/
-    suffix: .html#spring整合Mybatis
+    suffix: .html
+#spring整合Mybatis
 mybatis-plus:
     #配置别名包
   type-aliases-package: com.hb.pojo
@@ -18,7 +25,7 @@ mybatis-plus:
   mapper-locations: classpath:/mybatis/mappers/*.xml
     #开启驼峰映射
   configuration:
-    map-underscore-to-camel-case: true
+    map-underscore-to-camel-case: false
 #添加日志输出
 logging:
   level:

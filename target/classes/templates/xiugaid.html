@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+  <title>Booking</title>
+    <link rel="stylesheet" href="css/booking.css" type="text/css" media="all" />
+ 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+</head>
+<body>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <form action="#" method="POST">
+	<div style="margin-left:100px; margin-top:50px; font-size:30px"><font>电话:</font><input id="dianHua" type="text" name="dianHua" value=""/></div><br/>
+	<div style="margin-left:100px; margin-top:50px; font-size:30px"><p>地址:</p><input id="diZhi" type="text" style="width:440px" name="diZhi" value=""/></div>
+	<div style="margin-left:100px; margin-top:50px; font-size:30px"><p>服务宗旨:</p><textarea id="fwzz" style="width:440px; height:100px"></textarea></div>
+	<div><input  value="图片变更" style="width:150px; height:50px; margin-left:390px; margin-top:50px; padding-left:30px"/></div><br/>
+	<div><input  value="确定" style="width:100px; height:50px; margin-left:220px; margin-top:50px; padding-left:30px"/></div>
+	</form>
+</body>
+<script>
+	$(function(){
+		doLoadUI();
+	})
+	function doLoadUI(){
+		$.post("findD",function(SysResult){
+			console.log(SysResult.status)
+			if(SysResult.status==200){
+				console.log(SysResult.data)
+					doSetResult(SysResult.data)
+					
+			}
+		})
+	}
+	function doSetResult(result){
+		document.getElementById("dianHua").value=result.dianHua;
+		document.getElementById("diZhi").value=result.dianHua;
+		document.getElementById('fwzz').innerHTML=result.fuWuZongZhi;
+	}
+</script>
+</html>
